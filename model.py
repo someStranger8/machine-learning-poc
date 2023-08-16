@@ -12,7 +12,29 @@ def load():
 
 def main():
   if params[1] == "-f":
-    pass
+    with open(params[2], "r") as f:
+      file = f.read()
+    
+    l = 0
+    
+    for i in model:
+      if i in file:
+        choice = random.choice(model[i])
+
+        if choice:
+          l+=1
+
+        else:
+          l-=1
+
+    if l > 0:
+      print("good")
+
+    elif l < 0:
+      print("bad")
+
+    else:
+      print("neutral")
 
   elif params[1] == "-s":
     print("Type quit, exit, or q to quit")
